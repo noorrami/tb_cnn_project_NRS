@@ -1,0 +1,83 @@
+
+
+# TB Chest X-ray Classification using CNN
+
+This project implements a Convolutional Neural Network (CNN) in PyTorch to classify chest X-ray images into **Normal** and **Tuberculosis (TB)** categories.
+
+## Dataset
+The dataset used is the [Tuberculosis (TB) Chest X-ray Database](https://www.kaggle.com/datasets/tawsifurrahman/tuberculosis-tb-chest-xray-dataset) from Kaggle.  
+It contains X-ray images labeled as:
+- `Normal`
+- `Tuberculosis`
+
+## Project Structure
+tb_cnn_project/
+
+├── config.py  # Hyperparameters and configuration
+
+├── data_loader.py # Data loading and preprocessing
+
+├── model.py # CNN model architecture (TBCNN)
+
+├── train.py # Training and validation loops
+
+├── evaluate.py # Evaluation metrics and plots
+
+├── main.py # Main pipeline script
+
+├── requirements.txt # Python dependencies
+
+├── README.md # Project documentation
+
+└── TBCNN_model.pth # Trained model weights (generated after training)
+
+
+## Requirements
+Install the required packages:
+```bash
+pip install -r requirements.txt
+
+
+## How to Run
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/noorrami/tb_cnn_project_NRS.git
+   cd tb_cnn_project_NRS
+   ```
+2. Place the dataset in the correct path (update `DATA_DIR` in `config.py` if needed).
+3. Run the main script:
+   ```bash
+   python main.py
+   ```
+
+## Model Architecture (TBCNN)
+- 3 convolutional layers (16, 32, 128 filters)
+- MaxPooling, ReLU activations
+- Global Average Pooling
+- Fully connected layers (128 → 32 → 1)
+- Binary classification with BCEWithLogitsLoss
+
+## Results (after 10 epochs)
+| Metric        | Train | Validation |
+|---------------|-------|-------------|
+| Loss          | 0.1949| 0.2092      |
+| Accuracy      | 93.36%| 92.50%      |
+
+**Classification Report (Validation Set)**
+```
+              precision    recall  f1-score   support
+      Normal       0.92      0.99      0.96       681
+Tuberculosis       0.96      0.63      0.76       159
+```
+
+Confusion matrix and loss/accuracy curves are displayed after training.
+
+## Future Improvements
+- Data augmentation
+- Use of pretrained models (ResNet, DenseNet)
+- Hyperparameter tuning
+- Deployment with Flask or FastAPI
+
+## Author
+Noor Rami  
+[GitHub Profile](https://github.com/noorrami)
